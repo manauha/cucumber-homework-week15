@@ -1,0 +1,126 @@
+baseUrl :https://opensource-demo.orangehrmlive.com/
+
+Cucumber with page factory with extent report, runner.xml file to run test
+
+Project name: orange-hrm
+Group-Id : com.orangehrmlive.demo
+
+main package.
+
+create all packages and class that you created for page object model
+
+In Pages package
+
+1.LoginPage - Store username, password, Login Button and LOGIN Panel text Locators
+and create appropriate methods for it.
+
+2. HomePage - Store OrangeHRM logo, Admin, PIM, Leave,Dashboard, Welcome Text
+locators and create appropriate methods for it.
+
+3.DashboardPage - Dashboard text Locator and create appropriate methods for it.
+
+4.AdminPage - UserManagement, Job, Organization Tabs Locators and it's actions
+
+5.ViewSystemUsersPage - System Users Text, Username Field, User Roll dropDown,
+Employee Name Field, Status Drop Down, Search Button, Reset Button, Add Button
+and Delete Button locators and it's actions
+6.AddUserPage - User Role Drop Down, Employee Name, Username, Status Drop Down,
+Password, Confirm Password, Save and Cancel Button Locators and it's actions
+
+create all features files
+
+1.usertest.feature
+
+Inside usertest.feature create following scenarios
+
+1.adminShouldAddUserSuccessFully().
+Login to Application
+click On "Admin" Tab
+Verify "System Users" Text
+click On "Add" button
+Verify "Add User" Text
+Select User Role "Admin"
+enter Employee Name "Ananya Dash"
+enter Username
+Select status "Disable"
+enter password
+enter Confirm Password
+click On "Save" Button
+verify message "Successfully Saved"
+
+2. searchTheUserCreatedAndVerifyIt().
+Login to Application
+click On "Admin" Tab
+Verify "System Users" Text
+Enter Username
+Select User Role
+Select Status
+Click on "Search" Button
+Verify the User should be in Result list.
+
+3. verifyThatAdminShouldDeleteTheUserSuccessFully().
+Login to Application
+click On "Admin" Tab
+Verify "System Users" Text
+Enter Username
+Select User Role
+Select Status
+Click on "Search" Button
+Verify the User should be in Result list.
+Click on Check box
+Click on Delete Button
+Popup will display
+Click on Ok Button on Popup
+verify message "Successfully Deleted"
+
+4. searchTheUserAndVerifyTheMessageRecordFound().
+Login to Application
+click On "Admin" Tab
+Verify "System Users" Text
+Enter Username <username>
+Select User Role <userRole>
+Enter EmployeeName <employeeName>
+Select Status <status>
+Click on "Search" Button
+verify message "(1) Record Found"
+Verify username <username>
+Click on Reset Tab
+Data Set
+username userrole employeeName Status
+Admin Admin Paul Collings Enable
+Cassidy.Hope ESS Cassidy Hope Enable
+Nina.Patel ESS Nina Patel Enable
+Odis.Adalwin Admin Odis Adalwin Enable
+
+
+2. logintest.feature
+
+Inside logintest.feature create following scenarios
+
+1. verifyUserShouldLoginSuccessFully()
+Enter username
+Enter password
+Click on Login Button
+Verify "WelCome" Message
+
+2. verifyThatTheLogoDisplayOnHomePage()
+Login To The application
+Verify Logo is Displayed
+
+3. verifyUserShouldLogOutSuccessFully()
+Login To The application
+Click on User Profile logo
+Mouse hover on "Logout" and click
+Verify the text "Login Panel" is displayed
+
+4. verifyErrorMessageWithInvalidCredentials()
+Enter username <username>
+Enter password <password>
+Click on Login Button
+Verify Error message <errorMessage>
+Test Data:
+username password errorMessage
+Required
+test123@gmail.com Required
+test123 Required
+test123@gmail.com test123 Invalid credentials

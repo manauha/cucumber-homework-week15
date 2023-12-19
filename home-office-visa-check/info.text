@@ -1,0 +1,74 @@
+baseUrl : https://www.gov.uk/check-uk-visa
+Cucumber with page factory with extent report Create Smoker unner(Scenario-1), Sanity
+Runner(Scenario-1,3) and RegressionRunnner(Scenario-1,2,3)
+Project name: home-office-visa-check
+Group-Id : gov.uk.check.visa
+main package.
+create all packages and class that you created for page object model
+In Pages package
+1.StartPage - startNowButton locatores and create method 'void clickStartNow()'
+2.WorkTypePage - nextStepButton, selectJobtypeList locators and create methods 'void
+selectJobType(String job)'
+and 'void clickNextStepButton()'
+3.SelectNationalityPage -nationalityDropDownList, nextStepButton locators and create
+methods 'void selectNationality(String nationality)'
+and 'void clickNextStepButton()'
+4.ResultPage - resultMessage locator and create methods 'String getResultMessage()' and
+'void confirmResultMessage(String expectedMessage)' (Note Use Assert.assertTrue)
+5.ReasonForTravelPage - nextStepButton, reasonForVisitList locators and create methods
+'void selectReasonForVisit(String reason)'
+and 'void clickNextStepButton()'
+6.FamilyImmigrationStatusPage - nextStepButton, yes, no locators and create methods 'void
+selectImmigrationStatus(String status)'
+(Note: Use switch statement for select immigration status) and 'void clickNextStepButton()'
+7.DurationOfStayPage - nextStepButton, lessThanSixMonths, moreThanSixMonths locators
+and create methods
+'void selectLengthOfStay(String moreOrLess)' (Note: use switch statement for select
+moreOrLess stay) and
+'void clickNextStepButton()'
+Creates the features files
+1.visaconfirmationtest.feature
+Inside visaconfirmationtest.feature create following scenarios
+1.anAustralianCominToUKForTourism.
+Click on start button
+Select a Nationality 'Australia'
+Click on Continue button
+Select reason 'Tourism'
+Click on Continue button
+verify result 'You will not need a visa to come to the UK'
+2.aChileanComingToTheUKForWorkAndPlansOnStayingForLongerThanSixMonths.
+Click on start button
+Select a Nationality 'Chile'
+Click on Continue button
+Select reason 'Work, academic visit or business'
+Click on Continue button
+Select intendent to stay for 'longer than 6 months'
+Click on Continue button
+Select have planning to work for 'Health and care professional'
+Click on Continue button
+verify result 'You need a visa to work in health and care'
+3.aColumbianNationalComingToTheUKToJoinAPartnerForALongStayTheyDoHaveAn
+Article10Or20Card
+Click on start button
+Select a Nationality 'Colombia'
+Click on Continue button
+Select reason 'Join partner or family for a long stay'
+Click on Continue button
+Select state My partner of family member have uk immigration status 'yes'
+Click on Continue button
+verify result 'You’ll need a visa to join your family or partner in the UK'
+2.countrydropdown.feature write following scenario
+Scenario: Verify the following country available in country dropdown list
+Give I am on home page
+When I click on start button
+Than I can see following country into dropdown
+|albania|
+|bhutan|
+|british-protected-person|
+|haiti|
+|kazakhstan|
+|mozambique|
+|norway|
+|portugal|
+|russia|
+|zambia|
